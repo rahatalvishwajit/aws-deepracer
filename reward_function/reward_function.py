@@ -7,6 +7,7 @@ def reward_function(params):
     # Maximum speed
     SPEED_MAX = 3
 
+    # Input parameters
     all_wheels_on_track = params['all_wheels_on_track']
     distance_from_center = params['distance_from_center']
     is_offtrack = params['is_offtrack']
@@ -24,7 +25,7 @@ def reward_function(params):
     # center-line (but not making the function too restrictive).
     reward = 1 - (distance_from_center/(track_width/2))**(1/4)
     
-    # If steering angle is less that steering threshold and 
+    # If steering angle is less than steering threshold and 
     # speed is greater than the speed threshold, reward the vehicle.
     if abs(steering_angle) < STEERING_THRESHOLD and speed > SPEED_THRESHOLD:
         reward += speed/SPEED_MAX
